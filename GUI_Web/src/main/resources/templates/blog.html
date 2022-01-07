@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="head/head.html::static('Blogs')"></div>
+<body>
+<table class="table table-dark table-hover table-bordered">
+    <thead>
+    <tr>
+        <th scope="col">Popular</th>
+        <th scope="col">Author</th>
+        <th scope="col">Attractions</th>
+        <th scope="col">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="blog: ${msg}">
+        <td th:text="${blog.popular}"></td>
+        <td th:text="${blog.author}"></td>
+        <td th:text="${blog.attractions}"></td>
+        <td th:text="${blog.description}"></td>
+        <td><a href="edit" class="btn btn-secondary">Edit</a></td>
+    </tr>
+    </tbody>
+    <a class="btn btn-primary"  href="new" role="button">Add new</a>
+</table>
+
+</body>
+</html>
