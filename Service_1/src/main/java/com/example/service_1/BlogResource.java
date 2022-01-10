@@ -3,6 +3,7 @@ package com.example.service_1;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
@@ -23,13 +24,7 @@ public class BlogResource {
     public List<Blog> retrieveAll() {
         log.info("retrieveAll()");
 
-        // simulates problem (exception) on every 3rd request
-        /*counter = (counter + 1) % 3;
-        if (counter == 0) {
-            throw new RuntimeException("dummy");
-        }*/
-
-        return BlogRepository.findAll();
+        return BlogRepository.findAll(Sort.by(Sort.Direction.DESC,"popular"));
     }
 
     @DeleteMapping("/{id}")

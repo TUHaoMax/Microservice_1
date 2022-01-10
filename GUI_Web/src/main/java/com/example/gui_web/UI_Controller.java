@@ -7,20 +7,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-
-import javax.ws.rs.PUT;
-import java.util.Arrays;
 
 @Controller
 @Log
-public class ControllerUI {
+public class UI_Controller {
     @Autowired
-    private ControllerBlog controllerBlog;
+    private Service_Controller serviceController;
 
     @GetMapping
     String getBlog(Model model){
-        model.addAttribute("msg",controllerBlog.getBlogs());
+        model.addAttribute("msg", serviceController.getBlogs());
         return "blog";
     }
 
@@ -32,24 +28,24 @@ public class ControllerUI {
     @GetMapping("/Details/{id}")
     String editBlog(Model model,@PathVariable String id){
         log.info(String.valueOf(id));
-        model.addAttribute("msg",controllerBlog.getBlog(Long.valueOf(id)));
-        model.addAttribute("coms",controllerBlog.getComments(Long.valueOf(id)));
+        model.addAttribute("msg", serviceController.getBlog(Long.valueOf(id)));
+        model.addAttribute("coms", serviceController.getComments(Long.valueOf(id)));
         return "Details";
     }
 
     @PostMapping("/add")
     String addBlog(Model model,Blog blog){
-        log.info(controllerBlog.addBlog(blog));
+        log.info(serviceController.addBlog(blog));
 
-        model.addAttribute("msg",controllerBlog.getBlogs());
+        model.addAttribute("msg", serviceController.getBlogs());
         return "blog";
     }
 
     @GetMapping("/Update")
     String updateBlog(Model model,Blog blog){
         log.info("update{}"+blog);
-        controllerBlog.updateBlog(blog);
-        model.addAttribute("msg",controllerBlog.getBlogs());
+        serviceController.updateBlog(blog);
+        model.addAttribute("msg", serviceController.getBlogs());
         return "blog";
     }
 
@@ -63,14 +59,14 @@ public class ControllerUI {
     @PostMapping("/addCom/{id}")
     String addComment(Model model,Comments comments,@PathVariable String id){
         comments.setId(null);
-        Blog blog=controllerBlog.getBlog(Long.valueOf(id));
+        Blog blog= serviceController.getBlog(Long.valueOf(id));
         comments.setBlog(blog);
         blog.setPopular(blog.getPopular()+1);
-        controllerBlog.updateBlog(blog);
-        log.info(controllerBlog.addComment(comments));
+        serviceController.updateBlog(blog);
+        log.info(serviceController.addComment(comments));
 
 
-        model.addAttribute("msg",controllerBlog.getBlogs());
+        model.addAttribute("msg", serviceController.getBlogs());
         return "blog";
     }
 }

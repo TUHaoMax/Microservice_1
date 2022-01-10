@@ -12,7 +12,7 @@ import java.util.List;
 
 @Controller
 @Log
-public class ControllerBlog {
+public class Service_Controller {
     @Autowired
     private RestTemplate restTemplate;
 
