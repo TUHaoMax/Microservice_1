@@ -1,0 +1,16 @@
+POST http://localhost:5555/API/Comment/resources/comments
+Content-Type: application/json
+
+{
+  "blog": {
+    "id": 1
+  },
+  "score": 9,
+  "comments": "this is a test12312313"
+}
+
+###
+
+GET http://localhost:5555/API/Comment/resources/comments/1
+
+###

@@ -19,6 +19,25 @@ public class BlogResource {
 
     private int counter;
 
+    @GetMapping
+    public List<Blog> retrieveAll() {
+        log.info("retrieveAll()");
+
+        // simulates problem (exception) on every 3rd request
+        /*counter = (counter + 1) % 3;
+        if (counter == 0) {
+            throw new RuntimeException("dummy");
+        }*/
+
+        return BlogRepository.findAll();
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable long id) {
+        log.info("delete() >> id=" + id);
+
+        BlogRepository.deleteById(id);   // throw EmptyResultDataAccessException if news could not be found
+    }
 
     @GetMapping("/{id}")
     public Blog retrieve(@PathVariable long id) {

@@ -1,0 +1,30 @@
+POST http://localhost:5555/API/blog/resources/blogs
+Content-Type: application/json
+
+{
+  "attractions": "test ADD_2",
+  "description": "this is a test",
+  "author": "someone",
+  "popular": 1111
+}
+###
+PUT http://localhost:5555/API/blog/resources/blogs/1
+Content-Type: application/json
+
+{
+  "attractions": "update test ADD",
+  "description": "this is a update",
+  "author": "someone?",
+  "popular": 1999
+}
+
+###
+GET http://localhost:5555/API/blog/resources/blogs/1
+
+
+###
+GET http://localhost:5555/API/blog/resources/blogs
+
+
+###
+DELETE http://localhost:5555/API/blog/resources/blogs/2

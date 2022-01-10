@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="head/head.html::static('Comment')"></div>
+<body>
+<form th:action="${'/addCom/'+blog}" method="post">
+    <div class="mb-3">
+        <label for="score" class="form-label">Score</label>
+        <select  class="form-control" name="score" id="score">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="comments" class="form-label">Comment</label>
+        <textarea class="form-control" id="comments" name="comments" rows="9"></textarea>
+    </div>
+
+
+    <button type="Submit"  class="btn btn-primary">Submit</button>
+</form>
+</body>
+</html>

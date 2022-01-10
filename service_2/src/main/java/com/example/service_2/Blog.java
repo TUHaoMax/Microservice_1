@@ -18,10 +18,10 @@ public class Blog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 1000)
     private String attractions;
 
-    @Column(nullable = false, length = 10000)
+    @Column(nullable = false)
     private String description;
 
     @Column(nullable = false, length = 100)

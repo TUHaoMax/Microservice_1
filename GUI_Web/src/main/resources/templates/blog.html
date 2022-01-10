@@ -8,7 +8,7 @@
         <th scope="col">Popular</th>
         <th scope="col">Author</th>
         <th scope="col">Attractions</th>
-        <th scope="col">Description</th>
+        <th scope="col">operating</th>
     </tr>
     </thead>
     <tbody>
@@ -16,11 +16,13 @@
         <td th:text="${blog.popular}"></td>
         <td th:text="${blog.author}"></td>
         <td th:text="${blog.attractions}"></td>
-        <td th:text="${blog.description}"></td>
-        <td><a href="edit" class="btn btn-secondary">Edit</a></td>
+
+        <td>
+            <a th:href="${'/Details/'+blog.id}" class="btn btn-secondary">Details</a>
+        </td>
     </tr>
     </tbody>
-    <a class="btn btn-primary"  href="new" role="button">Add new</a>
+    <a class="btn btn-primary"  th:href="@{/new}" role="button">Add new</a>
 </table>
 
 </body>

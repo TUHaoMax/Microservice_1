@@ -4,28 +4,27 @@
 <body>
 <h1 > Add new </h1>
 
-<form>
+<form th:action="@{/add}" method="post">
     <div class="mb-3">
         <label for="attractions" class="form-label">Attractions</label>
-        <input type="text" class="form-control" id="attractions">
+        <input type="text" class="form-control" name="attractions" id="attractions">
     </div>
 
     <div class="mb-3">
         <label for="description" class="form-label">Description</label>
-        <textarea class="form-control" id="description" rows="3"></textarea>
+        <textarea class="form-control" id="description" name="description" rows="9"></textarea>
     </div>
 
     <div class="mb-3">
-        <label for="Author signature" class="form-label">Author signature</label>
-        <input type="text" class="form-control" id="Author signature">
+        <label for="author" class="form-label">author</label>
+        <input type="text" class="form-control" name="author" id="author">
     </div>
 
     <div class="mb-3">
-        <label for="Password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="Password">
+        <input type="hidden" class="form-control" name="popular" id="popular" value="0">
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="Submit"  class="btn btn-primary">Submit</button>
 </form>
 
 </body>

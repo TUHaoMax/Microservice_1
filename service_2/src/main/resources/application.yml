@@ -17,7 +17,7 @@ spring:
 
 
   application:
-    name: BlogServicesearch
+    name: CommentService
 
 eureka:
   client:
