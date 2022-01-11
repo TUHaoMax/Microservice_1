@@ -57,7 +57,7 @@ public class Service_Controller {
     }
 
     public String addBlog(Blog blog) {
-        log.info("getBlog()");
+        log.info("addBlog()");
 
         ResponseEntity<String> response = restTemplate.postForEntity(
                 "http://localhost:5555/API/blog/resources/blogs",

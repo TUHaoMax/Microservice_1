@@ -28,6 +28,11 @@ public class UI_Controller {
     @GetMapping("/Details/{id}")
     String editBlog(Model model,@PathVariable String id){
         log.info(String.valueOf(id));
+
+        Blog blog= serviceController.getBlog(Long.valueOf(id));
+        blog.setPopular(blog.getPopular()+1);
+        serviceController.updateBlog(blog);
+
         model.addAttribute("msg", serviceController.getBlog(Long.valueOf(id)));
         model.addAttribute("coms", serviceController.getComments(Long.valueOf(id)));
         return "Details";
@@ -62,6 +67,7 @@ public class UI_Controller {
         Blog blog= serviceController.getBlog(Long.valueOf(id));
         comments.setBlog(blog);
         blog.setPopular(blog.getPopular()+1);
+
         serviceController.updateBlog(blog);
         log.info(serviceController.addComment(comments));
 

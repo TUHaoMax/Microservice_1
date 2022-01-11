@@ -4,7 +4,9 @@ Content-Type: application/json
 {
   "attractions": "test ADD_2",
   "description": "this is a test",
-  "author": "someone",
+  "author": {
+    "id": 1
+  },
   "popular": 1111
 }
 ###
@@ -14,7 +16,9 @@ Content-Type: application/json
 {
   "attractions": "update test ADD",
   "description": "this is a update",
-  "author": "someone?",
+  "author": {
+    "id": 1
+  },
   "popular": 1999
 }
 

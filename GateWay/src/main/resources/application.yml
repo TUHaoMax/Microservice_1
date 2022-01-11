@@ -30,6 +30,17 @@ spring:
                 retries: 3
                 statutes: NOT_FOUND, INTERNAL_SERVER_ERROR
                 methods: DELETE, GET, HEAD, OPTIONS, PATCH, POST, PUT, TRACE
+        - id: Commentroute
+          uri: lb://AuthorSERVICE
+          predicates:
+            - Path=/API/Author/**
+          filters:
+            - RewritePath=/API/Author(?<segment>.*), $\{segment}
+            - name: Retry
+              args:
+                retries: 3
+                statutes: NOT_FOUND, INTERNAL_SERVER_ERROR
+                methods: DELETE, GET, HEAD, OPTIONS, PATCH, POST, PUT, TRACE
       globalcors:
         cors-configurations:
           "[/**]":

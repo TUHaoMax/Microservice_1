@@ -21,22 +21,16 @@ public class BlogResource {
     private int counter;
 
     @GetMapping
-    public List<Blog> retrieveAll() {
-        log.info("retrieveAll()");
+    public List<Blog> getAllblog() {
+        log.info("getAllblog()");
 
         return BlogRepository.findAll(Sort.by(Sort.Direction.DESC,"popular"));
     }
 
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable long id) {
-        log.info("delete() >> id=" + id);
-
-        BlogRepository.deleteById(id);   // throw EmptyResultDataAccessException if news could not be found
-    }
 
     @GetMapping("/{id}")
-    public Blog retrieve(@PathVariable long id) {
-        log.info("retrieve() >> id=" + id);
+    public Blog getBlog(@PathVariable long id) {
+        log.info("getBlog() >> id=" + id);
 
         return BlogRepository.findById(id)
                 .orElseThrow(
@@ -46,13 +40,13 @@ public class BlogResource {
 
     @PostMapping
     public ResponseEntity<?> create(@RequestBody Blog blog) {
-        log.info("create() >> news=" + blog);
+        log.info("create() >> blog=" + blog);
 
-        blog.setId(null);   // better safe than sorry
+        blog.setId(null);
         blog = BlogRepository.save(blog);
 
         URI location = WebMvcLinkBuilder.linkTo(
-                WebMvcLinkBuilder.methodOn(getClass()).retrieve(blog.getId())
+                WebMvcLinkBuilder.methodOn(getClass()).getBlog(blog.getId())
         ).toUri();
 
         return ResponseEntity.created(location).build();
@@ -60,9 +54,9 @@ public class BlogResource {
 
     @PutMapping("/{id}")
     public void update(@PathVariable long id, @RequestBody Blog blog) {
-        log.info("update() >> id=" + id + ", news=" + blog);
+        log.info("update() >> id=" + id + ", Blog=" + blog);
 
-        blog.setId(id);   // better safe than sorry
+        blog.setId(id);
         BlogRepository.save(blog);
     }
 

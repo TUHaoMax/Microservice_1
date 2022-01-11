@@ -24,13 +24,15 @@ public class Blog {
     @Column(nullable = false, length = 10000)
     private String description;
 
-    @Column(nullable = false, length = 100)
-    private String author;
+
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "authorid")
+    private Author author;
 
     @Column(nullable = false)
     private Long popular;
 
-    public Blog(String title, String description, String author, Long popular) {
-        this(null,title,description,author,popular);
+    public Blog(String attractions, String description, Author author, Long popular) {
+        this(null,attractions,description,author,popular);
     }
 }

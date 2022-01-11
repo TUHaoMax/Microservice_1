@@ -1,0 +1,14 @@
+POST http://localhost:5555/API/Author/resources/author
+Content-Type: application/json
+
+{
+  "name": "nr_2",
+  "reward": 0
+}
+
+###
+GET http://localhost:5555/API/Author/resources/author
+
+
+###
+

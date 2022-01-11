@@ -24,8 +24,8 @@ public class CommentResource {
 
 
 
-    public Comment retrieve(long id) {
-        log.info("retrieve() >> id=" + id);
+    public Comment getComment(long id) {
+        log.info("getComment() >> id=" + id);
 
         return commentRepository.findById(id)
                 .orElseThrow(
@@ -33,8 +33,8 @@ public class CommentResource {
                 );
     }
 
-    public Blog blogretrieve(long id) {
-        log.info("retrieve() >> id=" + id);
+    public Blog getblog(long id) {
+        log.info("getblog() >> id=" + id);
 
         return blogRepository.findById(id)
                 .orElseThrow(
@@ -43,24 +43,31 @@ public class CommentResource {
     }
 
     @GetMapping("/{id}")
-    public List<Comment> retrieveAll(@PathVariable long id) {
-        log.info("retrieveAll()"+id);
+    public List<Comment> getAllcomment(@PathVariable long id) {
+        log.info("getAllcomment_from"+id);
 
-        return commentRepository.findCommentByBlog(blogretrieve(id));
+        return commentRepository.findCommentByBlog(getblog(id));
     }
 
     @PostMapping
     public ResponseEntity<?> create(@RequestBody Comment comment) {
-        log.info("create() >> news=" + comment);
+        log.info("create() >> comment=" + comment);
 
-        comment.setId(null);   // better safe than sorry
+        comment.setId(null);
         comment = commentRepository.save(comment);
 
         URI location = WebMvcLinkBuilder.linkTo(
-                WebMvcLinkBuilder.methodOn(getClass()).retrieve(comment.getId())
+                WebMvcLinkBuilder.methodOn(getClass()).getComment(comment.getId())
         ).toUri();
 
         return ResponseEntity.created(location).build();
     }
 
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable long id) {
+        log.info("delete() >> Blog_id=" + id);
+
+        commentRepository.deleteAllByBlog(getblog(id));
+        blogRepository.deleteById(id);
+    }
 }
