@@ -14,10 +14,10 @@ GET http://localhost:5555/API/Author/resources/author
 GET http://localhost:5555/API/Author/resources/author/1
 
 ###
-PUT http://localhost:5555/API/Author/resources/author/1
+PUT http://localhost:5555/API/Author/resources/author/1/9/1
 Content-Type: application/json
 
 {
-  "name": "nr_1_update",
+  "name": "hmmm",
   "reward": 9
 }

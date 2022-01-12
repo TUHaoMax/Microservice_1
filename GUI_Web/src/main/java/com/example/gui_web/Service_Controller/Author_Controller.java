@@ -67,11 +67,11 @@ public class Author_Controller {
         return response.getHeaders();
     }
 
-    public void updateAuthor(Author author) {
+    public void updateAuthor(Author author,long paid,int IorP) {
         log.info("updateAuthor()"+author);
 
         restTemplate.put(
-                "http://localhost:5555/API/Author/resources/author/"+author.getId(),
+                "http://localhost:5555/API/Author/resources/author/"+author.getId()+"/"+paid+"/"+IorP,
                 author,
                 String.class
         );

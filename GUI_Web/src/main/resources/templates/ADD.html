@@ -3,7 +3,9 @@
 <div th:replace="head/head.html::static('Add new')"></div>
 <body>
 <h1 > Add new </h1>
-
+<a class="btn btn-primary"  th:href="@{/}" role="button">Blogs</a>
+&nbsp;&nbsp;
+<a class="btn btn-primary"  th:href="@{/auhtor}" role="button">Author</a>
 <form th:action="@{/add}" method="post">
     <div class="mb-3">
         <label for="attractions" class="form-label">Attractions</label>

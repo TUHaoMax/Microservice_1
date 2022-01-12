@@ -3,7 +3,9 @@
 <div th:replace="head/head.html::static('Details')"></div>
 <body>
 <h1 > Details </h1>
-
+<a class="btn btn-primary"  th:href="@{/}" role="button">Blogs</a>
+&nbsp;&nbsp;
+<a class="btn btn-primary"  th:href="@{/auhtor}" role="button">Author</a>
 <form th:action="@{/Update}" >
     <div class="mb-3">
         <label for="attractions" class="form-label">Attractions</label>

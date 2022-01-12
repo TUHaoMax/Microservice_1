@@ -3,6 +3,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <div th:replace="head/head.html::static('Comment')"></div>
 <body>
+<a class="btn btn-primary"  th:href="@{/}" role="button">Blogs</a>
+&nbsp;&nbsp;
+<a class="btn btn-primary"  th:href="@{/auhtor}" role="button">Author</a>
 <form th:action="${'/addCom/'+blog}" method="post">
     <div class="mb-3">
         <label for="score" class="form-label">Score</label>

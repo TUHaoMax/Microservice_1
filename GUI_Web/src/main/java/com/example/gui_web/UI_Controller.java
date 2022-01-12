@@ -34,6 +34,28 @@ public class UI_Controller {
         return "blog";
     }
 
+    @GetMapping("/auhtor")
+    String getAuthor(Model model){
+
+        model.addAttribute("msg", authorController.getAuthors());
+
+        return "Author";
+    }
+
+    @GetMapping("/SendReward/{id}")
+    String SendReward(Model model,@PathVariable String id){
+
+        Author author=authorController.getAuthor(Long.valueOf(id));
+        long paid=author.getReward();
+        author.setReward(0L);
+        authorController.updateAuthor(author,paid,0);
+
+        model.addAttribute("msg", "test message___"+id);
+
+        return "message";
+    }
+
+
     @GetMapping("/new")
     String newBlog(Model model){
         return "ADD";
@@ -47,6 +69,10 @@ public class UI_Controller {
         blog.setPopular(blog.getPopular()+1);
         log.info(String.valueOf(blog));
         blogController.updateBlog(blog);
+
+        Author author=blog.getAuthor();
+        author.setReward(author.getReward()+1);
+        authorController.updateAuthor(author,1,1);
 
         model.addAttribute("msg", blogController.getBlog(Long.valueOf(id)));
         model.addAttribute("coms", commentController.getComments(Long.valueOf(id)));
@@ -96,6 +122,11 @@ public class UI_Controller {
         blog.setPopular(blog.getPopular()+1);
 
         blogController.updateBlog(blog);
+
+        Author author=blog.getAuthor();
+        author.setReward(author.getReward()+1);
+        authorController.updateAuthor(author,1,1);
+
         log.info(commentController.addComment(comments));
 
 

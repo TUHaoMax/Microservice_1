@@ -1,0 +1,3 @@
+AuthorEvent(time=1642029410334, author=Author(id=17, name=Paid_test_Fafka, reward=2), eventMessage=income, paid=1)
+AuthorEvent(time=1642029426744, author=Author(id=17, name=Paid_test_Fafka, reward=0), eventMessage=Paid, paid=2)
+AuthorEvent(time=1642029438956, author=Author(id=17, name=Paid_test_Fafka, reward=0), eventMessage=underpaid, paid=0)

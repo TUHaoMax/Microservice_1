@@ -1,0 +1,1 @@
+AuthorEvent(time=1642028746028, author=Author(id=10, name=kafka_test_1, reward=9), eventMessage=income, paid=9)
