@@ -14,7 +14,7 @@
     <tbody>
     <tr th:each="blog: ${msg}">
         <td th:text="${blog.popular}"></td>
-        <td th:text="${blog.author}"></td>
+        <td th:text="${blog.author.name}"></td>
         <td th:text="${blog.attractions}"></td>
 
         <td>

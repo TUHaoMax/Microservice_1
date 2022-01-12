@@ -11,8 +11,10 @@ public class Blog {
     private Long id;
     private String attractions;
     private String description;
-    private String author;
+    private Author author;
     private Long popular;
 
-
+    public Blog(String attractions, String description, Author author, Long popular) {
+        this(null,attractions,description,author,popular);
+    }
 }

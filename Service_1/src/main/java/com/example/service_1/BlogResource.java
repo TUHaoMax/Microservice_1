@@ -54,9 +54,10 @@ public class BlogResource {
 
     @PutMapping("/{id}")
     public void update(@PathVariable long id, @RequestBody Blog blog) {
-        log.info("update() >> id=" + id + ", Blog=" + blog);
+        //log.info("update() >> id=" + id + ", Blog=" + blog);
 
         blog.setId(id);
+        log.info("update() >> id=" + id + ", Blog=" + blog);
         BlogRepository.save(blog);
     }
 

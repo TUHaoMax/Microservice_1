@@ -2,7 +2,7 @@ POST http://localhost:5555/API/Author/resources/author
 Content-Type: application/json
 
 {
-  "name": "nr_2",
+  "name": "nr_0",
   "reward": 0
 }
 
@@ -11,4 +11,13 @@ GET http://localhost:5555/API/Author/resources/author
 
 
 ###
+GET http://localhost:5555/API/Author/resources/author/1
 
+###
+PUT http://localhost:5555/API/Author/resources/author/1
+Content-Type: application/json
+
+{
+  "name": "nr_1_update",
+  "reward": 9
+}

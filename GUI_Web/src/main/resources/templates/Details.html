@@ -17,7 +17,7 @@
 
     <div class="mb-3">
         <label for="author" class="form-label">Author signature</label>
-        <input type="text" class="form-control" th:value="${msg.getAuthor()}" id="author" name="author">
+        <input type="text" disabled="disabled" class="form-control" th:value="${msg.getAuthor().name}" id="author" name="author">
     </div>
 
     <div class="mb-3">

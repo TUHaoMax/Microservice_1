@@ -8,8 +8,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @EnableScheduling
 public class GuiWebMain {
-    @Autowired
-    private Service_Controller serviceController;
+
 
     public static void main(String[] args) {
 

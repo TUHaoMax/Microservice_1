@@ -10,14 +10,16 @@ Content-Type: application/json
   "popular": 1111
 }
 ###
-PUT http://localhost:5555/API/blog/resources/blogs/1
+PUT http://localhost:5555/API/blog/resources/blogs/12
 Content-Type: application/json
 
 {
   "attractions": "update test ADD",
   "description": "this is a update",
   "author": {
-    "id": 1
+    "id": 1,
+    "name": "nr_1_b_Update",
+    "reward": 0
   },
   "popular": 1999
 }

@@ -1,5 +1,6 @@
-package com.example.gui_web;
+package com.example.gui_web.Service_Controller;
 
+import com.example.gui_web.Blog;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -12,12 +13,12 @@ import java.util.List;
 
 @Controller
 @Log
-public class Service_Controller {
+public class Blog_Controller {
     @Autowired
     private RestTemplate restTemplate;
 
     public List<Blog> getBlogs() {
-        log.info("getBlogs()");
+        log.info("getAllBlogs()");
 
         ResponseEntity<List<Blog>> response = restTemplate.exchange(
                 "http://localhost:5555/API/blog/resources/blogs",
@@ -29,22 +30,8 @@ public class Service_Controller {
         return response.getBody();
     }
 
-    public List<Comments> getComments(Long id) {
-        log.info("getComments()");
-
-        ResponseEntity<List<Comments>> response = restTemplate.exchange(
-                "http://localhost:5555/API/Comment/resources/comments/"+id,
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<>() {}
-        );
-
-        return response.getBody();
-    }
-
-
     public Blog getBlog(Long id) {
-        log.info("getBlog()");
+        log.info("getBlog()"+id);
 
         ResponseEntity<Blog> response = restTemplate.exchange(
                 "http://localhost:5555/API/blog/resources/blogs/"+id,
@@ -57,7 +44,7 @@ public class Service_Controller {
     }
 
     public String addBlog(Blog blog) {
-        log.info("addBlog()");
+        log.info("addBlog()"+blog);
 
         ResponseEntity<String> response = restTemplate.postForEntity(
                 "http://localhost:5555/API/blog/resources/blogs",
@@ -67,20 +54,8 @@ public class Service_Controller {
         return response.getBody();
     }
 
-    public String addComment(Comments comments) {
-        log.info("addComment()");
-
-        ResponseEntity<String> response = restTemplate.postForEntity(
-                "http://localhost:5555/API/Comment/resources/comments",
-                comments,
-                String.class
-        );
-
-        return response.getBody();
-    }
-
     public void updateBlog(Blog blog) {
-        log.info("updateBlog()");
+        log.info("updateBlog()"+blog);
 
         restTemplate.put(
                 "http://localhost:5555/API/blog/resources/blogs/"+blog.getId(),
@@ -89,7 +64,4 @@ public class Service_Controller {
         );
 
     }
-
-
-
 }
