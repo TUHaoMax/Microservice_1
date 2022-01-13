@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: newsletterconsumer2
+
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9092
+      bindings:
+        input:
+          destination: newsletter.author
+          content-type: application/json
+          group: newsletter.author.group2
+          consumer:
+            concurrency: 3

@@ -3,10 +3,13 @@ package com.example.gui_web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.stream.annotation.EnableBinding;
+import org.springframework.cloud.stream.messaging.Sink;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableScheduling
+@EnableBinding(Sink.class)
 public class GuiWebMain {
 
 
@@ -16,17 +19,5 @@ public class GuiWebMain {
 
 
     }
-   /* @Scheduled(fixedDelay = 3000)
-    public void run() {
-        System.out.println("runging");
-
-        try {
-            controllerBlog.getBlogs()
-                    .forEach(System.out::println);
-        }
-        catch (Exception e) {
-            System.err.println(e.getMessage());
-        }
-    }*/
 
 }

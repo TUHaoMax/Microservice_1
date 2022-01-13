@@ -4,8 +4,11 @@ import com.example.gui_web.Service_Controller.Author_Controller;
 import com.example.gui_web.Service_Controller.Blog_Controller;
 import com.example.gui_web.Service_Controller.Comment_Controller;
 import lombok.extern.java.Log;
+import org.springframework.cloud.stream.annotation.StreamListener;
+import org.springframework.cloud.stream.messaging.Sink;
 import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +20,7 @@ import java.util.List;
 @Controller
 @Log
 public class UI_Controller {
+
     @Autowired
     private Blog_Controller blogController;
 
@@ -25,6 +29,9 @@ public class UI_Controller {
 
     @Autowired
     private Author_Controller authorController;
+
+    @Autowired
+    private EventService eventService;
 
     @GetMapping
     String getBlog(Model model){
@@ -50,8 +57,9 @@ public class UI_Controller {
         author.setReward(0L);
         authorController.updateAuthor(author,paid,0);
 
-        model.addAttribute("msg", "test message___"+id);
+        model.addAttribute("msg",eventService.EventMsg);
 
+        log.info(eventService.EventMsg);
         return "message";
     }
 

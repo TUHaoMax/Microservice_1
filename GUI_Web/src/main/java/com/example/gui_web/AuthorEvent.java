@@ -1,14 +1,13 @@
-package com.example.payment_management;
+package com.example.gui_web;
 
 import lombok.*;
 
 import java.time.Instant;
 
-@NoArgsConstructor   // optional since default
+@NoArgsConstructor
 @Getter
 @ToString
 public class AuthorEvent {
-
     public enum EventMessage {
         Paid,underpaid,income
     }
@@ -16,7 +15,5 @@ public class AuthorEvent {
    Author author;
    EventMessage eventMessage;
    long paid;
-
-
 
 }
