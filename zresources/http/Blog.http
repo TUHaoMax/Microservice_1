@@ -7,10 +7,10 @@ Content-Type: application/json
   "author": {
     "id": 1
   },
-  "popular": 1111
+  "popular": 10
 }
 ###
-PUT http://localhost:5555/API/blog/resources/blogs/12
+PUT http://localhost:5555/API/blog/resources/blogs/1
 Content-Type: application/json
 
 {
@@ -21,7 +21,7 @@ Content-Type: application/json
     "name": "nr_1_b_Update",
     "reward": 0
   },
-  "popular": 1999
+  "popular": 19
 }
 
 ###

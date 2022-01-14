@@ -30,6 +30,10 @@
         <input type="hidden" class="form-control" id="id" name="id" th:value="${msg.id}">
     </div>
 
+    <div class="mb-3">
+        <input type="hidden" class="form-control" id="authorid" name="authorid" th:value="${msg.getAuthor().id}">
+    </div>
+
     <button type="submit" class="btn btn-primary">Update</button>
 </form>
 

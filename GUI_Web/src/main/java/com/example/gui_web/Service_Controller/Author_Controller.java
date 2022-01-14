@@ -1,6 +1,8 @@
 package com.example.gui_web.Service_Controller;
 
 import com.example.gui_web.Author;
+import lombok.Data;
+import lombok.Setter;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -12,11 +14,14 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
+@Data
 @Controller
 @Log
 public class Author_Controller {
     @Autowired
     private RestTemplate restTemplate;
+
+    private String eventMsg;
 
     public Author getAuthor(Long id) {
         log.info("getAuthor()"+id);

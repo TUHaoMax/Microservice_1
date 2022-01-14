@@ -3,6 +3,7 @@ package com.example.gui_web;
 import com.example.gui_web.Service_Controller.Author_Controller;
 import com.example.gui_web.Service_Controller.Blog_Controller;
 import com.example.gui_web.Service_Controller.Comment_Controller;
+import lombok.Setter;
 import lombok.extern.java.Log;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.cloud.stream.messaging.Sink;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
-
+@Setter
 @Controller
 @Log
 public class UI_Controller {
@@ -32,6 +33,7 @@ public class UI_Controller {
 
     @Autowired
     private EventService eventService;
+
 
     @GetMapping
     String getBlog(Model model){
@@ -49,6 +51,13 @@ public class UI_Controller {
         return "Author";
     }
 
+    @GetMapping("/message")
+    String getMessage(Model model){
+        log.info("GUI Event->"+eventService.EventMsg);
+        model.addAttribute("msg",eventService.EventMsg);
+        return "message";
+    }
+
     @GetMapping("/SendReward/{id}")
     String SendReward(Model model,@PathVariable String id){
 
@@ -56,11 +65,8 @@ public class UI_Controller {
         long paid=author.getReward();
         author.setReward(0L);
         authorController.updateAuthor(author,paid,0);
-
-        model.addAttribute("msg",eventService.EventMsg);
-
-        log.info(eventService.EventMsg);
-        return "message";
+        model.addAttribute("msg", authorController.getAuthors());
+        return "Author";
     }
 
 
@@ -108,7 +114,8 @@ public class UI_Controller {
     }
 
     @GetMapping("/Update")
-    String updateBlog(Model model,Blog blog){
+    String updateBlog(Model model,Blog blog,@RequestParam Long authorid){
+        blog.setAuthor(authorController.getAuthor(authorid));
         log.info("update{}"+blog);
         blogController.updateBlog(blog);
         model.addAttribute("msg", blogController.getBlogs());
